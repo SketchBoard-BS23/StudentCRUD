@@ -58,5 +58,6 @@ public class Student {
 
         //call create to add one more entry
         CRUD.createStudent("AsifProPlus", "Universe", 4.1);
+        CRUD.updateStudent(17,"AsifProMaxPlus", "Multiverse", 10.0);
     }
 }
