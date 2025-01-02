@@ -69,4 +69,18 @@ public class CRUD {
         }
         connection.close();
     }
+
+    public static void deleteStudent(int roll) throws SQLException {
+        String sql = "DELETE FROM " + Constants.TABLE_NAME + " WHERE roll = " + roll;
+        Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+        Statement statement = connection.createStatement();
+        int rowsAffected = statement.executeUpdate(sql);
+        if (rowsAffected != 0) {
+            System.out.println("*****Delete Operation Performed*****");
+            System.out.println(rowsAffected + " rows affected");
+        } else {
+            System.out.println("No entry with roll " + roll + " found");
+        }
+        connection.close();
+    }
 }

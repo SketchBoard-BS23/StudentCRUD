@@ -80,6 +80,7 @@ public class Student {
         //CRUD.read(2);
         // Read information of all students
         //CRUD.read();
+        //CRUD.deleteStudent(15);
         interactive.main(args);
     }
 }
