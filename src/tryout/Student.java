@@ -1,7 +1,6 @@
 package tryout;
 
 import java.sql.*;
-import tryout.Constants;
 
 public class Student {
     private static Statement statement;
@@ -51,5 +50,6 @@ public class Student {
 
         //call create to add one more entry
         CRUD.createStudent("AsifProPlus", "Universe", 4.1);
+        CRUD.createStudent("AsifProMaxPlus", "Multiverse", 10.0);
     }
 }

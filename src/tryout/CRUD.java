@@ -20,4 +20,16 @@ public class CRUD {
         System.out.println("The entry is:");
         System.out.println(rs.getInt("roll") + " " + rs.getString("name") + " " + rs.getString("dept") + " " + rs.getDouble("cgpa"));
     }
+
+    
+    public static void updateStudent(int roll, String Name, String Dept, Double CGPA) throws SQLException {
+        // SQL to update the student
+        String sql = "UPDATE " + Constants.TABLE_NAME + " SET name = '" + Name + "', dept = '" + Dept + "', cgpa = " + CGPA + " WHERE roll = " + roll;
+        // Check if there is a Student.Connection
+        Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+        Statement statement = connection.createStatement();
+        int rowsAffected = statement.executeUpdate(sql);
+        System.out.println("*****Update Student Performed*****");
+        System.out.println(rowsAffected + " rows affected");
+    }
 }
