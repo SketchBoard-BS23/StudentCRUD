@@ -1,6 +1,7 @@
 package tryout;
 
 import java.sql.*;
+import tryout.Constants;
 
 public class Student {
     private static Statement statement;
@@ -15,7 +16,7 @@ public class Student {
             try (ResultSet resultSet = statement.executeQuery(checkTableSQL)) {
                 if (!resultSet.next() || resultSet.getInt(1) == 0) {
                     String createTableSQL = "CREATE TABLE IF NOT EXISTS Student (" +
-                            "id SERIAL PRIMARY KEY, " +
+                            "roll SERIAL PRIMARY KEY, " +
                             "name VARCHAR(50) NOT NULL, " +
                             "dept VARCHAR(50) NOT NULL, " +
                             "cgpa FLOAT NOT NULL)";
@@ -37,15 +38,16 @@ public class Student {
     }
 
     public static void main(String[] args) throws SQLException {
-        initializeDatabase();
-        fillDummy();
-        String sql = "SELECT Name FROM student";
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet rs = statement.executeQuery(sql)) {
-            while (rs.next()) {
-                System.out.println(rs.getString("Name"));
-            }
-        }
+        String sql = "SELECT name FROM Student";
+        // Add from constants
+        String url = Constants.DB_URL;
+        String user = Constants.DB_USER;
+        String password = Constants.DB_PASSWORD;
+        Connection connection = DriverManager.getConnection(url, user, password);
+        Statement statement = connection.createStatement();
+        statement.executeQuery(sql);
+        ResultSet rs = statement.executeQuery(sql);
+        rs.next();
+        System.out.println(rs.getString("name"));
     }
 }
