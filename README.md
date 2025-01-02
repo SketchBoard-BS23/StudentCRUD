@@ -7,4 +7,4 @@ Team Members:
 - Sanjoy Kumar
 
 ### Demo video
-[demo_Video](demo.gif)
+![demo_Video](demo.gif)
