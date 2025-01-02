@@ -15,10 +15,10 @@ public class Student {
             try (ResultSet resultSet = statement.executeQuery(checkTableSQL)) {
                 if (!resultSet.next() || resultSet.getInt(1) == 0) {
                     String createTableSQL = "CREATE TABLE IF NOT EXISTS Student (" +
-                            "Roll SERIAL PRIMARY KEY, " +
-                            "Name VARCHAR(50) NOT NULL, " +
-                            "Dept VARCHAR(50) NOT NULL, " +
-                            "CGPA FLOAT NOT NULL)";
+                            "id SERIAL PRIMARY KEY, " +
+                            "name VARCHAR(50) NOT NULL, " +
+                            "dept VARCHAR(50) NOT NULL, " +
+                            "cgpa FLOAT NOT NULL)";
                     statement.executeUpdate(createTableSQL);
                 }
             }
@@ -28,7 +28,7 @@ public class Student {
     public static void fillDummy() throws SQLException {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement statement = connection.createStatement()) {
-            String insertDataSQL = "INSERT INTO Student (Name, Dept, CGPA) VALUES " +
+            String insertDataSQL = "INSERT INTO student (name, dept, cgpa) VALUES " +
                     "('Souvik', 'CS', 3.0), " +
                     "('Sanjoy', 'CS', 4.0), " +
                     "('Asif', 'CS', 3.8)";
@@ -39,7 +39,7 @@ public class Student {
     public static void main(String[] args) throws SQLException {
         initializeDatabase();
         fillDummy();
-        String sql = "SELECT Name FROM Student";
+        String sql = "SELECT Name FROM student";
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement statement = connection.createStatement();
              ResultSet rs = statement.executeQuery(sql)) {
