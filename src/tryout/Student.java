@@ -1,6 +1,7 @@
 package tryout;
 
 import java.sql.*;
+import tryout.Constants;
 
 public class Student {
     private static Statement statement;
@@ -38,14 +39,7 @@ public class Student {
 
     public static void main(String[] args) throws SQLException {
         initializeDatabase();
-        String checkDataSQL = "SELECT COUNT(*) FROM student";
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(checkDataSQL)) {
-            if (resultSet.next() && resultSet.getInt(1) == 0) {
-            fillDummy();
-            }
-        }
+//        fillDummy();
         String sql = "SELECT name FROM " + Constants.TABLE_NAME; // Use double quotes to preserve case
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement statement = connection.createStatement();
