@@ -39,4 +39,34 @@ public class CRUD {
             System.out.println("No entry with roll " + roll + " found");
         }
     }
+
+    public static void read(int roll) throws SQLException {
+        String sql = "SELECT * FROM " + Constants.TABLE_NAME + " WHERE roll = " + roll;
+        Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        System.out.println("*****Information of Student of roll " + roll + "*****");
+        if(rs.next()) {
+            System.out.println(rs.getInt("roll") + " " + rs.getString("name") + " " + rs.getString("dept") + " " + rs.getDouble("cgpa"));
+        } else {
+            System.out.println("No entry with roll " + roll + " found");
+        }
+        connection.close();
+    }
+
+    public static void read() throws SQLException {
+        String sql = "SELECT * FROM " + Constants.TABLE_NAME;
+        Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        System.out.println("*****Information of Student All Students*****");
+        if(rs.next()) {
+            do {
+                System.out.println(rs.getInt("roll") + " " + rs.getString("name") + " " + rs.getString("dept") + " " + rs.getDouble("cgpa"));
+            }while(rs.next());
+        } else {
+            System.out.println("Table is empty");
+        }
+        connection.close();
+    }
 }
