@@ -31,5 +31,10 @@ public class CRUD {
         int rowsAffected = statement.executeUpdate(sql);
         System.out.println("*****Update Student Performed*****");
         System.out.println(rowsAffected + " rows affected");
+        System.out.println("The updated entry is:");
+        sql = "SELECT * FROM " + Constants.TABLE_NAME + " WHERE roll = " + roll;
+        ResultSet rs = statement.executeQuery(sql);
+        rs.next();
+        System.out.println(rs.getInt("roll") + " " + rs.getString("name") + " " + rs.getString("dept") + " " + rs.getDouble("cgpa"));
     }
 }
