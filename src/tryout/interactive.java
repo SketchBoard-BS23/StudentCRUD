@@ -50,7 +50,8 @@ public class interactive {
             }
             if(choice == 4){
                 System.out.println("Enter the roll of the student to be deleted");
-                int roll = sc.nextInt()
+                int roll = sc.nextInt();
+                CRUD.deleteStudent(roll);
             }
         }
         sc.close();
