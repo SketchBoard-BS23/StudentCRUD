@@ -65,27 +65,22 @@ public class Student {
             }
         }
        
-        String sql = "SELECT name FROM " + Constants.TABLE_NAME; // Use double quotes to preserve case
-        try (Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet rs = statement.executeQuery(sql)) {
-            while (rs.next()) {
-                System.out.println(rs.getString("name"));
-            }
-        }
+//        String sql = "SELECT name FROM " + Constants.TABLE_NAME; // Use double quotes to preserve case
+//        try (Connection connection = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASSWORD);
+//             Statement statement = connection.createStatement();
+//             ResultSet rs = statement.executeQuery(sql)) {
+//            while (rs.next()) {
+//                System.out.println(rs.getString("name"));
+//            }
+//        }
 
-        // call create to add one more entry
-         CRUD.createStudent("AsifProPlus", "Universe", 4.1);
-         CRUD.updateStudent(17,"AsifProMaxPlus", "Multiverse", 10.0);
-
-        // Read information of a specific student
-        CRUD.read(2);
+        //call create to add one more entry
+//        CRUD.createStudent("AsifProPlus", "Universe", 4.1);
+//        CRUD.updateStudent(17,"AsifProMaxPlus", "Multiverse", 10.0);
+        //CRUD.read(2);
         // Read information of all students
-        // CRUD.read();
-
-        // Delete information of a specific student
-        CRUD.deleteStudent(15);
-        CRUD.read();
-
+        //CRUD.read();
+        //CRUD.deleteStudent(15);
+        interactive.main(args);
     }
 }
