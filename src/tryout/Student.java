@@ -75,12 +75,17 @@ public class Student {
         }
 
         // call create to add one more entry
-        CRUD.createStudent("AsifProPlus", "Universe", 4.1);
-        CRUD.updateStudent(17,"AsifProMaxPlus", "Multiverse", 10.0);
+         CRUD.createStudent("AsifProPlus", "Universe", 4.1);
+         CRUD.updateStudent(17,"AsifProMaxPlus", "Multiverse", 10.0);
 
-        // Read information of specific student
+        // Read information of a specific student
         CRUD.read(2);
         // Read information of all students
+        // CRUD.read();
+
+        // Delete information of a specific student
+        CRUD.deleteStudent(15);
         CRUD.read();
+
     }
 }
